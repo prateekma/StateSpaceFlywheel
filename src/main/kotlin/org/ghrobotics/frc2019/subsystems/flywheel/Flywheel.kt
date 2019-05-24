@@ -1,5 +1,6 @@
 package org.ghrobotics.frc2019.subsystems.flywheel
 
+import koma.end
 import koma.mat
 import org.ghrobotics.frc2019.control.FlywheelController
 
@@ -12,7 +13,7 @@ object Flywheel {
     private var currentState = State.Nothing
 
     // Internal Simulation Model, won't exist in real life.
-    var x = mat[0.0]
+    var x = mat[0.0 end 0.0]
     var y = mat[0.0]
 
     val controller = FlywheelController()
@@ -30,7 +31,7 @@ object Flywheel {
     fun update() {
         controller.y = this.y
         controller.update()
-        controller.reference = mat[periodicIO.demand]
+        controller.reference = mat[periodicIO.demand end 0.0]
 
         // motor.setVoltage(controller.voltage)
         if (currentState != wantedState) currentState = wantedState

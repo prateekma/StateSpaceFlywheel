@@ -12,8 +12,8 @@ class FlywheelController {
 
     var u = mat[0.0]
 
-    private val observerCoefficients = StateSpaceObserverCoeffs(1, 1, 1) { FlywheelCoeffs.L }
-    private val plantCoefficients = StateSpacePlantCoeffs(1, 1, 1) {
+    private val observerCoefficients = StateSpaceObserverCoeffs(2, 1, 1) { FlywheelCoeffs.L }
+    private val plantCoefficients = StateSpacePlantCoeffs(2, 1, 1) {
         listOf(
             FlywheelCoeffs.A,
             FlywheelCoeffs.B,
@@ -21,7 +21,7 @@ class FlywheelController {
             FlywheelCoeffs.D
         )
     }
-    private val controllerCoefficients = StateSpaceControllerCoeffs(1, 1, 1) {
+    private val controllerCoefficients = StateSpaceControllerCoeffs(2, 1, 1) {
         listOf(
             FlywheelCoeffs.K,
             FlywheelCoeffs.Kff,
@@ -30,7 +30,7 @@ class FlywheelController {
         )
     }
 
-    var reference = zeros(1, 1)
+    var reference = zeros(2, 1)
     var y = zeros(1, 1)
 
     val voltage get() = u[0, 0]
