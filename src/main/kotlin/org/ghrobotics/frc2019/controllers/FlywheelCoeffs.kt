@@ -1,4 +1,4 @@
-package org.ghrobotics.frc2019.subsystems.flywheel
+package org.ghrobotics.frc2019.controllers
 
 import koma.end
 import koma.mat
