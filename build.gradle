@@ -37,7 +37,6 @@ deploy {
 repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
-    maven { url "http://dl.bintray.com/kyonifer/maven" }
 }
 
 // Defining my dependencies. In this case, WPILib (+ friends)
@@ -52,9 +51,9 @@ dependencies {
     // We need to add the Kotlin stdlib in order to use most Kotlin language features.
     compile "org.jetbrains.kotlin:kotlin-stdlib"
 
-    compile "org.ghrobotics.FalconLibrary:core:fbae61f"
-    compile "org.ghrobotics.FalconLibrary:wpi:fbae61f"
-    compile "org.ghrobotics.FalconLibrary:vendorCTRE:fbae61f"
+    compile "org.ghrobotics.FalconLibrary:core:2019.5.25"
+    compile "org.ghrobotics.FalconLibrary:wpi:2019.5.25"
+    compile "org.ghrobotics.FalconLibrary:vendorCTRE:2019.5.25"
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
