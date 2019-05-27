@@ -1,28 +1,12 @@
 package org.ghrobotics.frc2019.controllers
 
-import org.ghrobotics.lib.mathematics.linalg.*
+import frc.team4069.keigen.*
 import org.ghrobotics.lib.mathematics.statespace.*
 
 class FlywheelController {
-
-    private val observerCoefficients = StateSpaceObserverCoeffs<`2`, `1`, `1`>(FlywheelCoeffs.L)
-
-    private val controllerCoefficients = StateSpaceControllerCoeffs<`2`, `1`, `1`>(
-        FlywheelCoeffs.K,
-        FlywheelCoeffs.Kff,
-        vec(`1`).fill(-12.0),
-        vec(`1`).fill(+12.0)
-    )
-
-    private val plantCoefficients = StateSpacePlantCoeffs(
-        `2`, `1`, `1`,
-        FlywheelCoeffs.A, FlywheelCoeffs.B, FlywheelCoeffs.C, FlywheelCoeffs.D
-    )
-
-
-    private val plant = StateSpacePlant(plantCoefficients)
-    private val controller = StateSpaceController(controllerCoefficients, plant)
-    private val observer = StateSpaceObserver(observerCoefficients, plant)
+    private val plant = StateSpacePlant(FlywheelCoeffs.plantCoeffs)
+    private val controller = StateSpaceController(FlywheelCoeffs.controllerCoeffs, plant)
+    private val observer = StateSpaceObserver(FlywheelCoeffs.observerCoeffs, plant)
 
     private var reference = vec(`2`).fill(0.0, 0.0)
     private var y = vec(`1`).fill(0.0)

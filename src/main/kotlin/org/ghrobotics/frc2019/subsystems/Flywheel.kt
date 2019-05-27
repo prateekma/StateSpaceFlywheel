@@ -28,7 +28,7 @@ object Flywheel : FalconSubsystem() {
         masterMotor.talonSRX.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 5)
     }
 
-    fun enable() {
+    override fun lateInit() {
         Notifier(this::update).startPeriodic(1.0 / 200.0)
     }
 
